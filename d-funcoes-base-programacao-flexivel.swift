@@ -1,10 +1,9 @@
-/*
-  
+/*  
   Desafio: Desafio funcoes - base de uma programacao dinamica e flexivel
   Curso: Dominando a Linguagem Swift
   Trilha: iOS Developer
   instrutor: Tiago
-  Data: 19/09/2023
+  Data: 18/09/2023
 
 */
 
@@ -43,8 +42,10 @@ func passwordGenerator ( numbersOfCharacters: Int) -> String {
     var numbers = numbersOfCharacters
     var results: Set<Int> = []
     var passwordCreated : String = ""
+    
+    numbers = (numbers == 0 || numbers > 10 || numbers < 10) ? 10 : numbers // forca o tamanho da senha sempre com 10 caracteres
 
-    while (numbers > 0) {
+    while ( numbers > 0 ){
         let ruffleNumber = Int.random(in: 0...9) // gerar numeros aleatórios de 0 a 9
         let res = results.insert(ruffleNumber) // colecao de dados sem repeticao
         
@@ -57,3 +58,6 @@ func passwordGenerator ( numbersOfCharacters: Int) -> String {
 }
 
 print(passwordGenerator(numbersOfCharacters: 10))
+print(passwordGenerator(numbersOfCharacters: 0))
+print(passwordGenerator(numbersOfCharacters: 30))
+print(passwordGenerator(numbersOfCharacters: 5))
